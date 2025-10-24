@@ -3,9 +3,25 @@
 @section(section: 'content')
 <h1>Welcome To Bookstore</h1>
 <br>
-<p>
-    <a href="{{ route('books.create') }}">Add Book</a>
-</p>
+<div class="row">
+    <div class="col-lg-10" >
+        <form method="get" action="{{ route('books.index') }}">
+            <div class="form-row">
+                <div class="col-8">
+                    <input type="text" class="form-control" id="search" name="search" placeholder="Search" value="{{ request('search') }}">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-default">Search</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-2">
+        <p class="text-right"><a href="{{ route('books.create') }}" class="btn btn-primary">Add Book</a></p>
+    </div>
+</div>
+
  <table class="table table-stripped table-bootstrap" >
         <tr>
             <th>Id</th>

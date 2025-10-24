@@ -7,9 +7,13 @@ use App\Models\Book;
 
 class BookController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::paginate(10);
+        if($request->has('search')){
+            $books = Book::where('title','like','%'.$request->search.'%')->paginate(10);
+        }else{
+            $books = Book::paginate(10);
+        }
         return view('books.index')->with('books',$books);
     }
 
